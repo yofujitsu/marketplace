@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "1234:5432"
+    environment:
+      POSTGRES_PASSWORD: pr5
+      POSTGRES_USER: pr5
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ulquiorrasshif/server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+
